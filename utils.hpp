@@ -13,6 +13,8 @@
 #include <boost/program_options.hpp> 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
+#include <boost/serialization/type_info_implementation.hpp>
+#include <boost/archive/basic_archive.hpp>
 #include <boost/property_tree/ptree_serialization.hpp>
 #include <boost/log/core.hpp>
 #include <boost/log/trivial.hpp>

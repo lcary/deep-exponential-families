@@ -6,8 +6,8 @@ def configure(conf):
   print("configure!")
 
   # Set the compiler to waf
-  conf.env.CXX = 'g++'
-  conf.env.CC = 'gcc'
+  conf.env.CXX = 'g++-7'
+  conf.env.CC = 'gcc-7'
   conf.env.LIBPATH_MYLIB = ['/usr/lib', '/usr/lib64']
 
   if conf.options.mode == 'release':
@@ -29,6 +29,7 @@ def configure(conf):
   conf.check(compiler='cxx',lib='boost_filesystem', uselib_store='FILESYSTEM')
   conf.check(compiler='cxx',lib='boost_system', uselib_store='SYSTEM')
   conf.check(compiler='cxx',lib='boost_log', uselib_store='LOG')
+  conf.check(compiler='cxx',lib='boost_log-mt', uselib_store='LOG_MT')
   conf.check(compiler='cxx',lib='boost_random', uselib_store='RANDOM')
 
 def build(bld):
@@ -49,5 +50,5 @@ def build(bld):
 	'optimizer.cpp',
 	'utils.cpp']
 
-  lib = ['PTHREAD', 'ARMADILLO', 'PROGRAM_OPTIONS', 'IOSTREAMS', 'SERIALIZATION', 'FILESYSTEM', 'SYSTEM', 'OPENMP', 'GSL', 'LOG', 'RANDOM']
+  lib = ['PTHREAD', 'ARMADILLO', 'PROGRAM_OPTIONS', 'IOSTREAMS', 'SERIALIZATION', 'FILESYSTEM', 'SYSTEM', 'OPENMP', 'GSL', 'LOG', 'LOG_MT', 'RANDOM']
   bld.program(source=src, use=lib, target='def_main')
